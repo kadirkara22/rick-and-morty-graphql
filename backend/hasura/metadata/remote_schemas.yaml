@@ -1,0 +1,5 @@
+- name: rickAndMorty
+  definition:
+    url: https://rickandmortyapi.com/graphql
+    timeout_seconds: 60
+  comment: ""
