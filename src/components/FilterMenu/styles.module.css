@@ -1,0 +1,26 @@
+.filterMenuContainer {
+  margin-right: 60px;
+  max-width: 260px;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+.filterMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+}
+.filterTitle {
+  color: #21243d;
+  font-size: 24px;
+  font-weight: 700;
+}
+.filterButton {
+  cursor: not-allowed;
+  background: none;
+  border: 0;
+  font: inherit;
+}
+.filterButton svg {
+  margin-right: 8px;
+}
