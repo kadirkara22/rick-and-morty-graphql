@@ -24,3 +24,100 @@
 .filterButton svg {
   margin-right: 8px;
 }
+.genderItem {
+  border-top: 1px solid rgba(128, 128, 128, 0.281);
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.title {
+  border: none;
+  color: var(--ais-color);
+  font-size: 0.678rem;
+  font-weight: 600;
+  letter-spacing: 0.08rem;
+  line-height: 1.6;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul li {
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.speciesItem {
+  border-top: 1px solid rgba(128, 128, 128, 0.281);
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.locationItem {
+  border-top: 1px solid rgba(128, 128, 128, 0.281);
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+input {
+  border: none;
+  border-radius: 2px;
+  height: 1rem;
+  margin: 0 1rem 0 0;
+  position: relative;
+  width: 1rem;
+  cursor: pointer;
+}
+.count {
+  align-items: center;
+  background-color: rgba(65, 66, 71, 0.08);
+  border-radius: 4px;
+  color: rgba(33, 36, 61, 0.8);
+  display: flex;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 1.1px;
+  margin-left: 8px;
+  padding: 0 4px;
+
+  font-weight: bold;
+}
+label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.locationContainer {
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.locationInput {
+  border-radius: 3px;
+  background-color: rgba(65, 66, 71, 0.06);
+  color: rgba(33, 36, 61, 0.8);
+  font-size: 0.8rem;
+  min-height: 40px;
+  padding: 0 44px;
+  border: none;
+  width: 60%;
+  outline: none;
+}
+.locationButton {
+  color: #e2a400;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 48px;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  background: none;
+}

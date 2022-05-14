@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client'
 import React from 'react'
 import Loading from '../Loading'
 import { GENDER_QUERY } from './queries'
-
+import styles from './styles.module.css'
 const Gender = () => {
     const { loading, data } = useQuery(GENDER_QUERY)
     if (loading) {
@@ -24,8 +24,8 @@ const Gender = () => {
 
 
     return (
-        <div>
-            <div>Gender</div>
+        <div className={styles.genderItem}>
+            <div className={styles.title}>Gender</div>
             <div>
                 <div>
                     <ul>
@@ -36,7 +36,7 @@ const Gender = () => {
                                     <label>
                                         <input type="checkbox"></input>
                                         <span>{item[1]}</span>
-                                        <span>{item[0]}</span>
+                                        <span className={styles.count}>{item[0]}</span>
                                     </label>
 
                                 </li>

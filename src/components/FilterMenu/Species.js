@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client'
 import React from 'react'
 import Loading from '../Loading'
 import { SPECIES_QUERY } from './queries'
-
+import styles from './styles.module.css'
 const Species = () => {
     const { loading, data } = useQuery(SPECIES_QUERY)
     if (loading) {
@@ -22,8 +22,8 @@ const Species = () => {
     });
 
     return (
-        <div>
-            <div>Species</div>
+        <div className={styles.speciesItem}>
+            <div className={styles.title}>Species</div>
             <div>
                 <div>
                     <ul>
@@ -34,7 +34,7 @@ const Species = () => {
                                     <label>
                                         <input type="checkbox"></input>
                                         <span>{item[1]}</span>
-                                        <span>{item[0]}</span>
+                                        <span className={styles.count}>{item[0]}</span>
                                     </label>
 
                                 </li>
