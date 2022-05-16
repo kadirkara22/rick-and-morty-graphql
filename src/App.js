@@ -9,7 +9,9 @@ import Loading from "./components/Loading";
 function App() {
   const { loading } = useQuery(RICKANDMORTY_QUERY)
   const [search, setSearch] = useState("")
-
+  const [selectedGender, setSelectedGender] = useState([])
+  const [selectedSpecies, setSelectedSpecies] = useState([])
+  const [selectedLocations, setSelectedLocations] = useState([])
 
   if (loading) {
     return <Loading />
@@ -21,10 +23,20 @@ function App() {
       <Search setSearch={setSearch} search={search} />
       <div className="container">
         <div className="filterMenu">
-          <FilterMenu />
+          <FilterMenu
+            setSelectedGender={setSelectedGender}
+            selectedGender={selectedGender}
+            selectedSpecies={selectedSpecies}
+            setSelectedSpecies={setSelectedSpecies}
+            selectedLocations={selectedLocations}
+            setSelectedLocations={setSelectedLocations}
+          />
         </div>
         <div className="content">
-          <Content search={search} />
+          <Content search={search}
+            selectedGender={selectedGender}
+            selectedSpecies={selectedSpecies}
+            selectedLocations={selectedLocations} />
         </div>
       </div>
 

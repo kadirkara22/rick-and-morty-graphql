@@ -15,6 +15,15 @@
   font-size: 24px;
   font-weight: 700;
 }
+.selectedFilter {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  font: inherit;
+}
+.selectedFilter svg {
+  margin-right: 8px;
+}
 .filterButton {
   cursor: not-allowed;
   background: none;

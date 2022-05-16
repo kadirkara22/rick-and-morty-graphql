@@ -1,9 +1,12 @@
 import { useQuery } from '@apollo/client'
-import React from 'react'
+import React, { useState } from 'react'
 import Loading from '../Loading'
 import { LOCATION_QUERY } from './queries'
 import styles from './styles.module.css'
-const Location = () => {
+const Location = ({ selectedLocations, setSelectedLocations, checked }) => {
+    const [search, setSearch] = useState("")
+
+
     const { loading, data } = useQuery(LOCATION_QUERY)
     if (loading) {
         return <Loading />
@@ -22,12 +25,24 @@ const Location = () => {
 
     });
 
+    const handleChange = (e) => {
+        setSearch(e.target.value)
+    }
+    const filteredLocation = countsSortLocations.filter(item => item[1].toLowerCase().includes(search.toLowerCase()))
+
+    const handleClick = (e) => {
+        setSelectedLocations(() => selectedLocations.length !== 0 ? (selectedLocations.find(item => item === e.target.value)
+            ? selectedLocations.map(item => item === e.target.value ? selectedLocations.find(item => item !== e.target.value) : item)
+            : [...selectedLocations, e.target.value]) : [...selectedLocations, e.target.value])
+
+    }
+
     return (
         <div className={styles.locationItem}>
             <div className={styles.title}>Location</div>
             <div>
                 <div className={styles.locationContainer}>
-                    <input className={styles.locationInput} placeholder="Search for locations…"></input>
+                    <input onChange={handleChange} checked={checked} value={search} className={styles.locationInput} placeholder="Search for locations…"></input>
                     <button className={styles.locationButton}>
                         <svg className="ais-SearchBox-submitIcon" xmlns="http://www.w3.org/2000/svg"
                             width="10" height="10" viewBox="0 0 40 40">
@@ -40,16 +55,17 @@ const Location = () => {
                     <ul>
 
                         {
-                            countsSortLocations && countsSortLocations.map((item, i) => (
+                            filteredLocation.length !== 0 ? filteredLocation.map((item, i) => (
                                 <li key={i}>
                                     <label>
-                                        <input type="checkbox"></input>
+                                        <input onClick={handleClick} value={item[1]} type="checkbox"></input>
                                         <span>{item[1]}</span>
                                         <span className={styles.count}>{item[0]}</span>
                                     </label>
 
                                 </li>
-                            ))
+                            )) :
+                                <div>No results</div>
                         }
 
 

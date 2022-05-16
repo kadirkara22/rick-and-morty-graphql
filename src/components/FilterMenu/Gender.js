@@ -1,9 +1,10 @@
 import { useQuery } from '@apollo/client'
-import React from 'react'
+import React, { useState } from 'react'
 import Loading from '../Loading'
 import { GENDER_QUERY } from './queries'
 import styles from './styles.module.css'
-const Gender = () => {
+const Gender = ({ setSelectedGender, selectedGender, checked }) => {
+
     const { loading, data } = useQuery(GENDER_QUERY)
     if (loading) {
         return <Loading />
@@ -11,6 +12,7 @@ const Gender = () => {
 
     const genderItem = []
     data.characters.results.forEach(item => { genderItem[item.gender] = (genderItem[item.gender] || 0) + 1 });
+
 
     var countsSortGender = [];
     for (var i in genderItem) {
@@ -21,6 +23,15 @@ const Gender = () => {
         return b[0] - a[0];
 
     });
+
+    const changeHandle = (e) => {
+
+        setSelectedGender(() => selectedGender.length !== 0 ? (selectedGender.find(item => item === e.target.value)
+            ? selectedGender.map(item => item === e.target.value ? selectedGender.find(item => item !== e.target.value) : item)
+            : [...selectedGender, e.target.value]) : [...selectedGender, e.target.value])
+
+
+    }
 
 
     return (
@@ -34,7 +45,7 @@ const Gender = () => {
                             countsSortGender && countsSortGender.map((item, i) => (
                                 <li key={i}>
                                     <label>
-                                        <input type="checkbox"></input>
+                                        <input onClick={changeHandle} checked={checked} value={item[1]} type="checkbox"></input>
                                         <span>{item[1]}</span>
                                         <span className={styles.count}>{item[0]}</span>
                                     </label>
